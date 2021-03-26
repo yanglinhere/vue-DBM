@@ -5,11 +5,11 @@
       <div class="info">
         <div class="title">
           <img src="@/assets/logo-blue.png">
-          <span>Database Manager</span>
+          <span>危险废物数据管理平台</span>
         </div>
         <div class="detail">
           <span>
-            Database Manager 助您更好的管理关系型数据
+            危险废物指纹特征数据库及溯源信息平台
           </span>
         </div>
       </div>
@@ -33,11 +33,11 @@
         </el-form-item>
       </el-form>
     </div>
-    <div class="login-footer">
-      <a href="https://github.com/calebman/vue-DBM">
-        点此进入代码仓库
-      </a>
-    </div>
+<!--    <div class="login-footer">-->
+<!--      <a href="https://github.com/calebman/vue-DBM">-->
+<!--        点此进入代码仓库-->
+<!--      </a>-->
+<!--    </div>-->
   </div>
 </template>
 

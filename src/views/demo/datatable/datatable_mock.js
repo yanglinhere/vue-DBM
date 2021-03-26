@@ -1,21 +1,27 @@
 import Mock from 'mockjs';
 import moment from 'moment';
+import gufeiData from './data'
+
 function mockData(table, pagination) {
     let result = {
         tableData: [],
         pagination: {}
     };
-    let rowCount = mockNumber(25, 100);
+    // let rowCount = mockNumber(25, 100);
+    let rowCount = pagination.pageSize;
     if (pagination) {
         result.pagination = pagination;
-        if (pagination.pageCurrent < Math.ceil(pagination.totalCount / pagination.pageSize)) {
+        if (pagination.pageCurrent <= Math.ceil(pagination.totalCount / pagination.pageSize)) {
             rowCount = pagination.pageSize;
         } else {
             rowCount = (pagination.totalCount % pagination.pageSize);
         }
     }
+    console.log(pagination)
     for (let i = 0; i < rowCount; i++) {
-        result.tableData.push(mockRowData(table.cols));
+        var dataIndex = i+(pagination.pageCurrent-1)*pagination.pageSize
+        
+        result.tableData.push(gufeiData.gufeiData[dataIndex]);
     }
     return result;
 }

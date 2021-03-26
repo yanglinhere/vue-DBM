@@ -5,7 +5,7 @@
       <el-col :xs="10" :sm="12" :md="14" :lg="16" :xl="18">
         <div class="system-info">
           <img class="logo" src="@/assets/logo.png">
-          <span class="title">Database Manager</span>
+          <span class="title">危险废物指纹特征数据库及溯源信息平台</span>
         </div>
       </el-col>
       <el-col v-if="isLogin" :xs="14" :sm="12" :md="10" :lg="8" :xl="6">

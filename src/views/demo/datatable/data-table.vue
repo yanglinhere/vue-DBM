@@ -7,11 +7,6 @@
             <div class="header-left">
               <i class="dbm d-icon-3501shuju"></i>
               {{table.tableName}} &nbsp;&nbsp;
-              <el-tooltip content="导出表格数据" effect="light">
-                <a @click.prevent="exportData">
-                  <i class="dbm d-icon-download"></i>
-                </a>
-              </el-tooltip>
               &nbsp;&nbsp;
               <el-tooltip content="插入一条数据" effect="light">
                 <a @click.prevent="insert">
@@ -25,12 +20,12 @@
                 </div>
                 <i slot="reference" class="dbm d-icon-icon_seelog_fill"></i>
               </el-popover>
-              &nbsp;&nbsp;
+              <!-- &nbsp;&nbsp;
               <el-tooltip :content="isOpenFilter?'关闭筛选':'开启筛选'" effect="light">
                 <a @click.prevent="openFilter">
                   <i class="dbm d-icon-filter" :style="{color:isOpenFilter?'#6b6b6b':'#008b8b'}"></i>
                 </a>
-              </el-tooltip>
+              </el-tooltip> -->
               &nbsp;&nbsp;
               <el-tooltip content="重新加载数据" effect="light">
                 <a @click.prevent="refreshData">
@@ -46,6 +41,10 @@
             </div>
           </el-col>
         </el-row>
+      </div>
+      <div style="float:left">
+        <el-input v-model="input" placeholder="搜索数据" style="width:200px" ></el-input>
+        <el-button @click="dialogFormVisible = false" >搜索</el-button>
       </div>
       <div class="table-card-content">
         <v-table ref="dataTable" :is-loading="isLoading" :is-filter="isOpenFilter" :error-content-height="minHeight" style="width:100%;" :min-height="minHeight" :columns="columns" :table-data="tableData" row-hover-color="#eee" row-click-color="#edf7ff" :row-height="rowHeight" :cell-click-done="cellClickDone" :paging-index="(pagination.pageCurrent-1)*pagination.pageSize" :clearFilterFlag="clearFilterFlag" :dataFilterRules="dataFilterRules" @on-filter-change="onFilterChange"></v-table>
@@ -91,9 +90,9 @@ export default {
       columns: [],
       tableData: [],
       pagination: {
-        pageSize: 30,
+        pageSize: 50,
         pageCurrent: 1,
-        totalCount: 0
+        totalCount: 200
       },
       cellClickData: {
         index: -1,
@@ -400,47 +399,89 @@ export default {
   created() {
     this.dataFilterRules = datatableUtils.dataFilterRule;
     let table = {
-      tableName: "个人信息表",
-      dataCount: 1205,
+      tableName: "固废指纹特征数据表",
+      dataCount: 200,
       cols: [
         {
-          columnName: "姓名",
-          columnKey: "",
+          columnName: "数据来源",
+          columnKey: "数据来源",
           columnDefault: null,
           isNullable: "NO",
           dataType: "varchar"
         },
         {
-          columnName: "昵称",
-          columnKey: "",
+          columnName: "产生行业",
+          columnKey: "产生行业",
+          columnDefault: null,
+          isNullable: "NO",
+          dataType: "varchar"
+        },
+         {
+          columnName: "废物类型",
+          columnKey: "废物类型",
           columnDefault: null,
           isNullable: "NO",
           dataType: "varchar"
         },
         {
-          columnName: "家庭住址",
-          columnKey: "",
+          columnName: "固废名称",
+          columnKey: "固废名称",
           columnDefault: null,
+          isNullable: "NO",
+          dataType: "varchar"
+        },
+        {
+          columnName: "废物描述",
+          columnKey: "废物描述",
+          columnDefault: '-',
+          isNullable: "NO",
+          dataType: "varchar"
+        },
+        {
+          columnName: "颜色",
+          columnKey: "颜色",
+          columnDefault: '-',
           isNullable: "YES",
           dataType: "varchar"
         },
         {
-          columnName: "出生年月",
-          columnKey: "",
-          columnDefault: null,
+          columnName: "形态",
+          columnKey: "形态",
+          columnDefault: '-',
           isNullable: "YES",
-          dataType: "datetime"
+          dataType: "varchar"
+        },
+         {
+          columnName: "气味",
+          columnKey: "气味",
+          columnDefault: '-',
+          isNullable: "YES",
+          dataType: "varchar"
         },
         {
-          columnName: "照骗",
-          columnKey: "",
+          columnName: "含水率(%)",
+          columnKey: "含水率(%)",
           columnDefault: null,
           isNullable: "YES",
-          dataType: "text"
+          dataType: "decimal"
         },
         {
-          columnName: "高考分数",
-          columnKey: "",
+          columnName: "挥发分含量",
+          columnKey: "挥发分含量",
+          columnDefault: null,
+          isNullable: "YES",
+          dataType: "decimal"
+        },
+        {
+          columnName: "灰分含量",
+          columnKey: "灰分含量",
+          columnDefault: null,
+          isNullable: "YES",
+          dataType: "decimal"
+        },
+        {
+          columnName: "Al2O3",
+          columnKey: "Al2O3",
           columnDefault: null,
           isNullable: "YES",
           dataType: "decimal"
@@ -448,7 +489,7 @@ export default {
       ]
     };
     this.table = table;
-    this.pagination.totalCount = table.dataCount;
+    // this.pagination.totalCount = table.dataCount;
     this.initColumns();
     this.getData();
   }

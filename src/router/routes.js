@@ -1,6 +1,6 @@
 /*
- * @Author: calebman 
- * @Date: 2018-05-06 12:10:56 
+ * @Author: calebman
+ * @Date: 2018-05-06 12:10:56
  * @Last Modified by: calebman
  * @Last Modified time: 2018-05-14 10:14:21
  */
@@ -28,34 +28,42 @@ export const constantRouterMap = [
 
 const layout = () => import(/* webpackChunkName: "group-index" */ '@/views/layout');
 export const asyncRouterMap = [
+  // {
+  //   path: '/',
+  //   name: 'main',
+  //   redirect: '/dashboard',
+  //   hidden: true,
+  //   component: layout,
+  //   children: [
+  //     { path: 'dashboard', name: 'dashboard', meta: { title: "仪表盘" }, component: () => import(/* webpackChunkName: "group-index" */'@/views/dashboard') }
+  //   ]
+  // },
   {
     path: '/',
     name: 'main',
-    redirect: '/dashboard',
-    hidden: true,
-    component: layout,
-    children: [
-      { path: 'dashboard', name: 'dashboard', meta: { title: "仪表盘" }, component: () => import(/* webpackChunkName: "group-index" */'@/views/dashboard') }
-    ]
+    redirect: '/example',
+    hidden: true
   },
+
   {
     path: '/example',
-    name: 'example',
-    meta: { title: "组件", icon: "dbm d-icon-zujian" },
+    name: 'main',
+    meta: { title: "固废数据管理", icon: "dbm d-icon-zujian" },
     redirect: '/example/datatabledemo',
     component: layout,
     children: [
-      { path: "menucarddemo", name: "menuCardDemo", meta: { title: "菜单卡片", icon: "dbm d-icon-qiapian" }, component: () => import('@/views/demo/menu-card-demo') },
-      { path: "treeviewdemo", name: "treeViewDemo", meta: { title: "树形结构", icon: "dbm d-icon-shu" }, component: () => import('@/views/demo/tree-view-demo') },
-      { path: "datatabledemo", name: "dataTableDemo", meta: { title: "数据表格", icon: "dbm d-icon-biaoge" }, component: () => import('@/views/demo/datatable/data-table') },
-      { path: "chartsdemo", name: "chartsDemo", meta: { title: "echarts图表", icon: "dbm d-icon-tubiao" }, component: () => import('@/views/demo/charts-demo') },
-      { path: "test", name: "test", meta: { title: "布局测试", icon: "icon dbm d-icon-test" }, component: () => import('@/views/demo/layout-test') }
+      // { path: "menucarddemo", name: "menuCardDemo", meta: { title: "菜单卡片", icon: "dbm d-icon-qiapian" }, component: () => import('@/views/demo/menu-card-demo') },
+      // { path: "treeviewdemo", name: "treeViewDemo", meta: { title: "树形结构", icon: "dbm d-icon-shu" }, component: () => import('@/views/demo/tree-view-demo') },
+      { path: "datatabledemo", name: "dataTableDemo", meta: { title: "数据查询", icon: "dbm d-icon-biaoge" }, component: () => import('@/views/demo/datatable/data-table') },
+      // { path: "chartsdemo", name: "chartsDemo", meta: { title: "echarts图表", icon: "dbm d-icon-tubiao" }, component: () => import('@/views/demo/charts-demo') },
+      { path: "source", name: "source", meta: { title: "废物溯源", icon: "icon dbm d-icon-test" }, component: () => import('@/views/demo/source-test') },
+      { path: "test", name: "test", meta: { title: "数据分析", icon: "icon dbm d-icon-test" }, component: () => import('@/views/demo/layout-test') }
     ]
   },
   {
     path: '/permission',
     name: 'permission',
-    meta: { title: "权限页", icon: "dbm d-icon-quanxian" },
+    meta: { title: "平台管理", icon: "dbm d-icon-quanxian" },
     redirect: '/permission/adminpermission',
     component: layout,
     children: [
@@ -64,16 +72,16 @@ export const asyncRouterMap = [
       { path: "elementpermission", name: "elementPermission", meta: { title: "元素级别权限" }, component: () => import('@/views/permission/element') }
     ]
   },
-  {
-    path: '/errorpage',
-    name: 'errorpage',
-    meta: { title: "错误页面", icon: "dbm d-icon-error" },
-    redirect: '/errorpage/404',
-    component: layout,
-    children: [
-      { path: "401", name: "unauthorized", meta: { title: "401页面", icon: "dbm d-icon-403" }, component: page401 },
-      { path: "404", name: "pageNotFound", meta: { title: "404页面", icon: "dbm d-icon-msnui-404" }, component: page404 }
-    ]
-  },
+  // {
+  //   path: '/errorpage',
+  //   name: 'errorpage',
+  //   meta: { title: "错误页面", icon: "dbm d-icon-error" },
+  //   redirect: '/errorpage/404',
+  //   component: layout,
+  //   children: [
+  //     { path: "401", name: "unauthorized", meta: { title: "401页面", icon: "dbm d-icon-403" }, component: page401 },
+  //     { path: "404", name: "pageNotFound", meta: { title: "404页面", icon: "dbm d-icon-msnui-404" }, component: page404 }
+  //   ]
+  // },
   { path: '*', redirect: '/404', hidden: true }
 ]
