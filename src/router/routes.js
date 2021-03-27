@@ -56,8 +56,9 @@ export const asyncRouterMap = [
       // { path: "treeviewdemo", name: "treeViewDemo", meta: { title: "树形结构", icon: "dbm d-icon-shu" }, component: () => import('@/views/demo/tree-view-demo') },
       { path: "datatabledemo", name: "dataTableDemo", meta: { title: "数据查询", icon: "dbm d-icon-biaoge" }, component: () => import('@/views/demo/datatable/data-table') },
       // { path: "chartsdemo", name: "chartsDemo", meta: { title: "echarts图表", icon: "dbm d-icon-tubiao" }, component: () => import('@/views/demo/charts-demo') },
+      { path: "add_data", name: "add_data", meta: { title: "插入数据", icon: "icon dbm d-icon-qiapian" }, component: () => import('@/views/demo/add_data') },
       { path: "source", name: "source", meta: { title: "废物溯源", icon: "icon dbm d-icon-test" }, component: () => import('@/views/demo/source-test') },
-      { path: "test", name: "test", meta: { title: "数据分析", icon: "icon dbm d-icon-test" }, component: () => import('@/views/demo/layout-test') }
+      { path: "test", name: "test", meta: { title: "数据分析", icon: "icon dbm d-icon-shu" }, component: () => import('@/views/demo/layout-test') }
     ]
   },
   {
